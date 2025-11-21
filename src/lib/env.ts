@@ -3,7 +3,9 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    DATABASE_URL: z.url(), // Server-only secrets, never exposed to client
+    // Server-only secrets, never exposed to client
+    DATABASE_URL: z.url(),
+    GOOGLE_GENERATIVE_AI_API_KEY: z.string(),
   },
   client: {
     NEXT_PUBLIC_BASE_URL: z.url(), // Public values safe for client
