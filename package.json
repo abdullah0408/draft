@@ -11,7 +11,16 @@
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "format": "prettier --write .",
-    "test": "npm run check-types && npm run check-format && npm run lint && npm run build"
+    "test": "npm run check-types && npm run check-format && npm run lint && npm run build",
+    "postinstall": "prisma generate",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:migrate:save": "prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma --script > prisma/migrations/auto.sql",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:migrate:reset": "prisma migrate reset",
+    "prisma:studio": "prisma studio",
+    "prisma:db:push": "prisma db push",
+    "auth:generate": "bunx @better-auth/cli generate --config ./src/modules/auth/lib/auth.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^2.0.39",
@@ -51,6 +60,7 @@
     "@trpc/tanstack-react-query": "^11.7.1",
     "@types/pg": "^8.15.6",
     "ai": "^5.0.97",
+    "better-auth": "^1.4.0",
     "class-variance-authority": "^0.7.1",
     "client-only": "^0.0.1",
     "clsx": "^2.1.1",
@@ -79,6 +89,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@better-auth/cli": "^1.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
